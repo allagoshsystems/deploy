@@ -2,8 +2,8 @@ name: Cricket Odds Scraper
 
 on:
   schedule:
-    - cron: '*/15 * * * *' # Runs every 15 minutes
-  workflow_dispatch: # Allows manual trigger from GitHub UI
+    - cron: '*/15 * * * *' # Runs automatically every 15 minutes
+  workflow_dispatch: # Allows manual run from GitHub UI
 
 jobs:
   scrape:
@@ -22,14 +22,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Playwright browsers and system dependencies
+      - name: Install Playwright browsers and dependencies
         run: |
           playwright install chromium
           npx playwright install-deps chromium
 
       - name: Run scraper script
         run: |
-          python cricket_odds_scraper_2.py --once
+          python cricket_odds_scraper.py --once
 
       - name: Commit and push changes if odds.json updated
         run: |
