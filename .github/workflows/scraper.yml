@@ -29,7 +29,7 @@ jobs:
 
       - name: Run scraper script
         run: |
-          python cricket_odds_scraper.py --once
+          python cricket_odds_scraper.py
 
       - name: Commit and push changes if odds.json updated
         run: |
